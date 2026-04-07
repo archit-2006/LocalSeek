@@ -3,7 +3,6 @@ package com.augt.localseek.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.augt.localseek.model.SearchResult
 import com.augt.localseek.retrieval.BM25Retriever
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -18,7 +17,7 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
     private val bM25Retriever = BM25Retriever(application)
-    private var searchJob: Job? = null;
+    private var searchJob: Job? = null
 
     fun onQueryChanged(newQuery: String) {
         _uiState.update { it.copy(query = newQuery) }
